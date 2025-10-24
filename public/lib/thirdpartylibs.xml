@@ -53,7 +53,7 @@
     <location>evalmath</location>
     <name>EvalMath</name>
     <description>Class to safely evaluate math expressions.</description>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <license>BSD</license>
     <repository>https://github.com/dbojdo/eval-math</repository>
     <copyrights>
@@ -611,7 +611,7 @@ All rights reserved.</copyright>
     <location>zipstream</location>
     <name>ZipStream-PHP</name>
     <description>PHP ZIP Streaming Library</description>
-    <version>3.1.2</version>
+    <version>3.2.0</version>
     <license>MIT</license>
     <repository>https://github.com/maennchen/ZipStream-PHP</repository>
     <copyrights>
@@ -773,7 +773,7 @@ All rights reserved.</copyright>
     <location>aws-sdk</location>
     <name>AWS SDK for PHP</name>
     <description>The AWS SDK for PHP library</description>
-    <version>3.342.2</version>
+    <version>3.356.22</version>
     <license>Apache</license>
     <licenseversion>2.0</licenseversion>
     <repository>https://github.com/aws/aws-sdk-php</repository>

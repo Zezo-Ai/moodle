@@ -705,7 +705,7 @@ class assign {
         } else if ($action == 'viewbatchmarkingallocation') {
             $o .= $this->view_batch_markingallocation();
         } else if ($action == 'viewsubmitforgradingerror') {
-            $o .= $this->view_error_page(get_string('submitforgrading', 'assign'), $notices);
+            $o .= $this->view_notices(get_string('submitforgrading', 'assign'), $notices);
         } else if ($action == 'fixrescalednullgrades') {
             $o .= $this->view_fix_rescaled_null_grades();
         } else {
@@ -6440,8 +6440,10 @@ class assign {
         }
 
         if ($userid == $graderid) {
-            if ($this->submissions_open($userid) &&
-                    has_capability('mod/assign:submit', $this->context, $graderid)) {
+            if (
+                $this->submissions_open($userid)
+                && has_capability('mod/assign:submit', $this->context, $graderid, false)
+            ) {
                 // User can edit their own submission.
                 return true;
             } else {
@@ -7003,9 +7005,12 @@ class assign {
     /**
      * A students submission is submitted for grading by a teacher.
      *
+     * @param moodleform|null $mform If validation failed when submitting this form - this is the moodleform.
+     *               It can be null.
+     * @param array $notices Receives error messages to display on an error condition.
      * @return bool
      */
-    protected function process_submit_other_for_grading($mform, $notices) {
+    protected function process_submit_other_for_grading($mform, &$notices) {
         global $USER, $CFG;
 
         require_sesskey();
@@ -7026,9 +7031,10 @@ class assign {
      *
      * @param moodleform|null $mform If validation failed when submitting this form - this is the moodleform.
      *               It can be null.
+     * @param array $notices Receives error messages to display on an error condition.
      * @return bool Return false if the validation fails. This affects which page is displayed next.
      */
-    protected function process_submit_for_grading($mform, $notices) {
+    protected function process_submit_for_grading($mform, &$notices) {
         global $CFG;
 
         require_once($CFG->dirroot . '/mod/assign/submissionconfirmform.php');
